@@ -54,8 +54,8 @@ flowchart LR
 │  ├─ import-guide.md
 │  └─ sanitization-notes.md
 ├─ images
-│  ├─ cover.svg
-│  ├─ result-preview.svg
+│  ├─ cover.png
+│  ├─ result-preview.png
 │  └─ workflow-overview.svg
 └─ workflow
    └─ news-automation-sanitized.json

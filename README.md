@@ -1,6 +1,6 @@
 ﻿# AI 新闻自动采集与摘要工作流
 
-![项目封面](images/cover.svg)
+![项目封面](images/cover.png)
 
 这是一个基于 `n8n` 的新闻自动化项目示例：定时抓取多源 RSS 内容，筛选当天新闻，调用大模型生成结构化摘要，再写入飞书多维表格。
 
@@ -27,7 +27,7 @@ flowchart LR
 
 ## 示例效果
 
-![结果预览](images/result-preview.svg)
+![结果预览](images/result-preview.png)
 
 工作流输出字段示例：
 

@@ -1,0 +1,32 @@
+﻿<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#F8FBFA"/>
+  <text x="80" y="95" fill="#173F3A" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="34" font-weight="800">Output Preview</text>
+  <rect x="80" y="140" width="1120" height="470" rx="26" fill="#FFFFFF" stroke="#D7E7E2"/>
+  <rect x="80" y="140" width="1120" height="70" rx="26" fill="#EAF7F3"/>
+  <text x="120" y="184" fill="#22584E" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">Title</text>
+  <text x="540" y="184" fill="#22584E" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">Published At</text>
+  <text x="760" y="184" fill="#22584E" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">Source</text>
+  <text x="930" y="184" fill="#22584E" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">Summary</text>
+  <line x1="500" y1="140" x2="500" y2="610" stroke="#E5EFEC"/>
+  <line x1="730" y1="140" x2="730" y2="610" stroke="#E5EFEC"/>
+  <line x1="900" y1="140" x2="900" y2="610" stroke="#E5EFEC"/>
+  <line x1="80" y1="275" x2="1200" y2="275" stroke="#EDF3F1"/>
+  <line x1="80" y1="405" x2="1200" y2="405" stroke="#EDF3F1"/>
+  <line x1="80" y1="535" x2="1200" y2="535" stroke="#EDF3F1"/>
+  <text x="120" y="245" fill="#1F2E2B" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">OpenAI 发布新一代智能体能力更新</text>
+  <text x="540" y="245" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">2026-03-29 09:00</text>
+  <text x="760" y="245" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">AI Feed A</text>
+  <text x="930" y="235" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">摘要：新能力强调工具调用、流程自动化与</text>
+  <text x="930" y="262" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">更稳定的结构化输出，适合企业级工作流接入。</text>
+  <text x="120" y="375" fill="#1F2E2B" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">多模态模型在内容生产场景中的新应用</text>
+  <text x="540" y="375" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">2026-03-29 09:00</text>
+  <text x="760" y="375" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">Tech Feed C</text>
+  <text x="930" y="365" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">摘要：文章讨论了多模态模型在文档生成、</text>
+  <text x="930" y="392" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">信息检索和自动化内容编排中的落地方式。</text>
+  <text x="120" y="505" fill="#1F2E2B" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">开源 LLM 工具链持续升级，企业部署门槛下降</text>
+  <text x="540" y="505" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">2026-03-29 21:00</text>
+  <text x="760" y="505" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">AI Feed D</text>
+  <text x="930" y="495" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">摘要：随着开源生态成熟，自动化工作流与</text>
+  <text x="930" y="522" fill="#526563" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">企业知识库、消息通知系统的结合更加顺畅。</text>
+  <text x="80" y="660" fill="#647573" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">图为示意预览，用于帮助招聘方快速理解项目输出效果。</text>
+</svg>

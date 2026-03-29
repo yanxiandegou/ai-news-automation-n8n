@@ -1,0 +1,683 @@
+{
+  "name": "AI News Automation (Public Sanitized)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -780,
+        140
+      ],
+      "id": "7863c4ca-d45f-4037-b781-ffb678568c99",
+      "name": "Schedule Trigger - Morning"
+    },
+    {
+      "parameters": {
+        "maxItems": 6
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ],
+      "id": "4f10bc55-7fb9-4740-9935-7655922ffd05",
+      "name": "Limit Feed B"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "566c1ede-df27-432e-a605-ecba84e099a8",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "46152e4b-ef50-4578-b022-c56ac97844dc",
+              "name": "published_at",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "485ee840-7ec6-4ee9-8349-864eb0ffe435",
+              "name": "content",
+              "value": "={{ $json['content:encodedSnippet'] || $json.content || $json.contentSnippet || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "dd30c801-2217-420e-a337-73524894b650",
+              "name": "link",
+              "value": "={{ $json.link || $json.guid }}",
+              "type": "string"
+            },
+            {
+              "id": "d351f227-bb81-4d39-93e8-8d24771025af",
+              "name": "source",
+              "value": "AI Feed B",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        200
+      ],
+      "id": "8b0900ce-d661-4706-a678-db2eb79ec5ea",
+      "name": "Normalize Feed B"
+    },
+    {
+      "parameters": {
+        "resource": "bitable",
+        "operation": "bitable:table:record:add",
+        "app_toke": "APP_TOKEN_PLACEHOLDER",
+        "table_id": "TABLE_ID_PLACEHOLDER",
+        "body": "={\"fields\":{\"Title\":\"{{ $json['title'] }}\",\"PublishedAt\":\"{{ $json['published_at'] }}\",\"Summary\":\"{{ $json['summary'] }}\",\"Source\":\"{{ $json['source'] }}\",\"Link\":{\"text\":\"Open Article\",\"link\":\"{{ $json['link'] }}\"}}}"
+      },
+      "type": "n8n-nodes-feishu-lite.feishuNode",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        300
+      ],
+      "id": "d1386399-805b-454b-888c-10e9031bfa33",
+      "name": "Write to Feishu Bitable"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c12a8604-4cf6-4450-b62a-34efc6041c92",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "41a62bce-c755-4cc2-9beb-05c33146fa8d",
+              "name": "content",
+              "value": "={{ $json['content:encodedSnippet'] || $json.content || $json.contentSnippet || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "65541a9d-7041-41ec-8b51-87cf75b76554",
+              "name": "published_at",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "885000e0-7cf7-45e1-8757-ced1cd54fc00",
+              "name": "link",
+              "value": "={{ $json.link || $json.guid }}",
+              "type": "string"
+            },
+            {
+              "id": "3b253c13-45ff-4fbc-a12f-70e3f09c815c",
+              "name": "source",
+              "value": "AI Feed A",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "3a601911-b613-4c24-b1f3-dcd72b737690",
+      "name": "Normalize Feed A"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4a6f9f45-3c11-4524-9be5-f730b56f17f3",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "f68170aa-2ca3-4e5b-a3cd-6de9caf18bc7",
+              "name": "published_at",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "de78fd6b-2ee0-4d0e-9c62-7bc7fcff3f32",
+              "name": "content",
+              "value": "={{ $json['content:encodedSnippet'] || $json.content || $json.contentSnippet || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "92d70c7f-03ce-4608-bad1-41c7fae5f4a4",
+              "name": "link",
+              "value": "={{ $json.link || $json.guid }}",
+              "type": "string"
+            },
+            {
+              "id": "4bccfc6b-c914-47fd-a073-049e0ab52234",
+              "name": "source",
+              "value": "Tech Feed C",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        200,
+        400
+      ],
+      "id": "10771a63-f033-4da0-bcfb-2a6ce1e1c597",
+      "name": "Normalize Feed C"
+    },
+    {
+      "parameters": {
+        "maxItems": 6
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        0,
+        600
+      ],
+      "id": "3f6e06df-090d-4cb3-8f55-3a3e453b3a96",
+      "name": "Limit Feed D"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a45690cf-ad3c-45eb-b247-573cbeb33085",
+              "name": "published_at",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "6ab5382e-0ab1-4f1f-a24f-37558243d508",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "c36ff096-9fa6-46f1-9b19-610887b9eed7",
+              "name": "content",
+              "value": "={{ $json.content || $json['content:encodedSnippet'] || $json.contentSnippet || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "8af9729f-fd49-4063-a45d-fe381ac46654",
+              "name": "link",
+              "value": "={{ $json.link || $json.guid }}",
+              "type": "string"
+            },
+            {
+              "id": "804fa287-05c3-497e-be0e-b7ee2e3ef13b",
+              "name": "source",
+              "value": "AI Feed D",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        600
+      ],
+      "id": "056f4bfd-6c58-4ea1-b5a6-f75308842aa1",
+      "name": "Normalize Feed D"
+    },
+    {
+      "parameters": {
+        "url": "https://example.com/rss/ai-feed-a.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "bf03cb8f-b80a-41ed-9266-7ab1ddaa5d18",
+      "name": "AI Feed A"
+    },
+    {
+      "parameters": {
+        "url": "https://example.com/rss/ai-feed-b.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        -220,
+        200
+      ],
+      "id": "482192da-8fbd-4109-85b5-39d965cbe3b2",
+      "name": "AI Feed B"
+    },
+    {
+      "parameters": {
+        "url": "https://example.com/rss/tech-feed-c.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        400
+      ],
+      "id": "649d0cd5-d7be-4ec0-918d-82167d286c21",
+      "name": "Tech Feed C"
+    },
+    {
+      "parameters": {
+        "url": "https://example.com/rss/ai-feed-d.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        -220,
+        600
+      ],
+      "id": "61317a99-8e8e-448e-a3e4-01aaaf89a0d2",
+      "name": "AI Feed D"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a291383a-2989-4e4f-bf9a-34a46c06c3d8",
+              "leftValue": "={{ (() => { const s = ($json['published_at'] ?? '').toString().trim(); if (!s) return ''; const d = new Date(s); if (isNaN(d.getTime())) return ''; return d.toISOString().slice(0,10); })() }}",
+              "rightValue": "={{ new Date().toISOString().slice(0,10) }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        340
+      ],
+      "id": "6c364e5d-6554-461e-9d0e-dec239caa579",
+      "name": "Keep Today Only"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 21
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -700,
+        480
+      ],
+      "id": "f796ba00-d035-4cf0-bfd8-2a2914860e78",
+      "name": "Schedule Trigger - Evening"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Please rewrite the following news item as structured JSON only. Do not add markdown.\n\nTitle: {{ $json['title'] }}\nContent: {{ $json['content'] }}\nPublishedAt: {{ $json['published_at'] }}\nLink: {{ $json['link'] }}\nSource: {{ $json['source'] }}\n\nReturn:\n{\n  \"title\": \"clean title\",\n  \"published_at\": \"original date\",\n  \"summary\": \"3-4 sentence concise summary\",\n  \"source\": \"source name\",\n  \"link\": \"article url\"\n}",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        740,
+        340
+      ],
+      "id": "7d2e9d4b-6bdb-4c9b-96f8-baaf50899df3",
+      "name": "Summarize with LLM"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-chat",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        680,
+        600
+      ],
+      "id": "ae67744c-b3e1-43ee-8d8f-23027e1ab83c",
+      "name": "DeepSeek Chat Model"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4899cbc9-b256-4378-b030-5ed9c4b9f491",
+              "name": "published_at",
+              "value": "={{ $json.output['published_at'] }}",
+              "type": "string"
+            },
+            {
+              "id": "55f35fb8-e5dc-4e29-be42-d04d8a5ddf38",
+              "name": "summary",
+              "value": "={{ $json.output['summary'] }}",
+              "type": "string"
+            },
+            {
+              "id": "7cfb38ff-e2fc-4d06-b3ca-74b6018f80f0",
+              "name": "source",
+              "value": "={{ $json.output['source'] }}",
+              "type": "string"
+            },
+            {
+              "id": "21625050-7ccd-48a3-834b-cab3e03f833f",
+              "name": "link",
+              "value": "={{ $json.output['link'] }}",
+              "type": "string"
+            },
+            {
+              "id": "a8acfac0-6be7-4bd7-b685-744f020dd6b6",
+              "name": "title",
+              "value": "={{ $json.output['title'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        300
+      ],
+      "id": "f9510440-ce23-4e18-8849-9309f749f5ef",
+      "name": "Flatten Structured Output"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"title\": \"Model release update\",\n  \"published_at\": \"2026-03-29\",\n  \"summary\": \"A concise 3-4 sentence summary.\",\n  \"source\": \"AI Feed A\",\n  \"link\": \"https://example.com/article\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        560
+      ],
+      "id": "9a1e5c7b-abd5-4c8d-810c-36f4d3a21190",
+      "name": "Structured Output Parser"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger - Morning": {
+      "main": [
+        [
+          {
+            "node": "AI Feed A",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AI Feed B",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tech Feed C",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AI Feed D",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit Feed B": {
+      "main": [
+        [
+          {
+            "node": "Normalize Feed B",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Feed B": {
+      "main": [
+        [
+          {
+            "node": "Keep Today Only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write to Feishu Bitable": {
+      "main": [
+        []
+      ]
+    },
+    "Normalize Feed A": {
+      "main": [
+        [
+          {
+            "node": "Keep Today Only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Feed C": {
+      "main": [
+        [
+          {
+            "node": "Keep Today Only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit Feed D": {
+      "main": [
+        [
+          {
+            "node": "Normalize Feed D",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Feed D": {
+      "main": [
+        [
+          {
+            "node": "Keep Today Only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Feed A": {
+      "main": [
+        [
+          {
+            "node": "Normalize Feed A",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Feed B": {
+      "main": [
+        [
+          {
+            "node": "Limit Feed B",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tech Feed C": {
+      "main": [
+        [
+          {
+            "node": "Normalize Feed C",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Feed D": {
+      "main": [
+        [
+          {
+            "node": "Limit Feed D",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep Today Only": {
+      "main": [
+        [
+          {
+            "node": "Summarize with LLM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger - Evening": {
+      "main": [
+        [
+          {
+            "node": "AI Feed A",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AI Feed B",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tech Feed C",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AI Feed D",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize with LLM": {
+      "main": [
+        [
+          {
+            "node": "Flatten Structured Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarize with LLM",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flatten Structured Output": {
+      "main": [
+        [
+          {
+            "node": "Write to Feishu Bitable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Summarize with LLM",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

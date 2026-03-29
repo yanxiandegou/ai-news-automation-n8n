@@ -7,11 +7,11 @@
 
 ## 发布步骤
 
-1. 在 GitHub 新建一个 `Public` 仓库。
+1. 在 GitHub 新建一个 `Public` 仓库，仓库名建议为 `ai-news-automation-n8n`。
 2. 在本地项目目录执行以下命令：
 
 ```powershell
-git remote add origin https://github.com/<你的用户名>/ai-news-automation-n8n.git
+git remote add origin https://github.com/yanxiandegou/ai-news-automation-n8n.git
 git push -u origin main
 ```
 
@@ -26,7 +26,7 @@ git push -u origin main
 优先放仓库主页链接：
 
 ```text
-https://github.com/<你的用户名>/ai-news-automation-n8n
+https://github.com/yanxiandegou/ai-news-automation-n8n
 ```
 
 不要只放单个 JSON 文件链接，因为招聘方通常更愿意先看 README 和项目说明。
